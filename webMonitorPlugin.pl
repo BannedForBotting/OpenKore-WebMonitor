@@ -67,6 +67,7 @@ use Log qw(warning message error);
 
 my $port;
 my $bind;
+my $socketPort;
 my $webserver;
 our $socketServer;
 
@@ -84,6 +85,7 @@ sub Unload {
 sub post_loading {
 	$port = $config{webPort} || 1025;
 	$bind = $config{webBind} || "localhost";
+	$socketPort = $config{webSocketPort} || undef;
 
 	eval {
 		$webserver = new webMonitorServer($port, $bind);
@@ -95,7 +97,7 @@ sub post_loading {
 
 	eval {
 		require WebMonitor::WebSocketServer;
-		$socketServer = new WebMonitor::WebSocketServer(undef, $bind);
+		$socketServer = new WebMonitor::WebSocketServer($socketPort, $bind);
 	};
 	unless ($socketServer) {
 		error "WebSocket server failed to start: $@\n"
