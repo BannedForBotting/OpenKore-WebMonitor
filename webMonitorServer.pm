@@ -781,7 +781,7 @@ sub request {
 		'characterLocationX' => $char->position()->{x},
 		'characterLocationY' => $char->position()->{y},
 		'characterLocationMap' => $field->name,
-		'characterLocationMapURL' => sprintf($config{webMapURL} || (-e '/map/%s', $field->name) ? '/map/%s' : undef),
+		'characterLocationMapURL' => sprintf($config{webMapURL} || '/map/%s', $field->name),
 		'characterLocationDescription' => $field->descString,
 		'characterGetRouteX' => $char->{pos_to}->{x}, # Never used
 		'characterGetRouteY' => $char->{pos_to}->{y}, # Never used
