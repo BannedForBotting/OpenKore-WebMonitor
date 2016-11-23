@@ -385,7 +385,7 @@ sub request {
 	my ($i, $name, $class, $lvl, $title, $online, $ID, $charID);
 	my (@listMemberIndex, @listMemberName, @listMemberClass, @listMemberLvl, @listMemberTitle, @listMemberOnline, @listMemberID, @listMemberCharID);
 	
-	if (defined @{$guild{member}}) {
+	if (defined ()) {
 		my $count = @{$guild{member}};
 			for ($i = 0; $i < $count; $i++) {
 				$name  = $guild{member}[$i]{name};
